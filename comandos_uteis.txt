@@ -1,0 +1,5 @@
+python run.py runserver
+python run.py db upgrade
+python run.py db migrate
+.\venv\Scripts\Activate.ps1 
+.\venv\Scripts\Activate.ps1

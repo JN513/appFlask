@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static' , filename='js/bootstrap.min.js') }}"></script>
+    
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+   
+    <link rel="stylesheet"  href= "{{ url_for('static' , 
+     filename='css/bootstrap.min.css') }}"/>
+
+    <title>Login</title>
+</head>
+<body>
+
+  <div class="container">
+
+      <div class="col-md-4  col-md-offset-3">
+
+        <form action=""  method="POST" >
+              {{ form.csrf_token }}
+
+                <div class="form-group">
+
+                    <label>Usuario</label>                
+                      {{  form.username(class="form-control" , placeholder ="Seu Usuario") }}
+                      {% if form.errors.username %}
+                    <div class="alert alert-danger" role="alert">
+                      Erro aqui no usuario
+                    </div>
+                      {% endif %}
+                </div>
+
+                <div class="form-group">
+
+                  <label>Senha</label>
+                    {{ form.password(class="form-control") }}
+                    {% if form.errors.password %}
+                    <div class='alert alert-danger' role='alert'>Fudeu Lek
+                  </div>
+                      {% endif %}
+                
+                </div> 
+
+                <div class="checkbox">
+                    <label>
+                      {{form.remember_me}} Manter Conectado          
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+   </div>
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
