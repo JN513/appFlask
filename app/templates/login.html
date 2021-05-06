@@ -30,32 +30,31 @@
 
                 <div class="form-group">                  
 
-                          {% with messages = get_flashed_messages() %}
-                          {% if messages %}
-                              <div class="alert alert-warning" role="alert">
-                                <ul class=flashes>
-                                {% for message in messages %}
-                                    <li>{{ message }}</li>
-                                {% endfor %}
-                                </ul>
-                              </div>
-                            {% endif %}  
-                          {% endwith %}
-                        
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      {% if messages[0] != {} %}
+                      <div class="alert alert-warning" role="alert">
+                        <ul class=flashes>
+                        {% for message in messages %}
+                              <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      </div>
 
-                      
-                          <label>Usuario</label>                
-                            {{  form.username(class="form-control" , placeholder ="Seu Usuario") }}
-                            {% if form.errors.username %}
-                          <div class="alert alert-danger" role="alert">
-                            Erro aqui no usuario
-                          </div>
-                            {% endif %}
+                      {% endif %}
+                    {% endif %}  
+                  {% endwith %}
+                
+
+              
+                  <label>Usuario</label>                
+                    {{  form.username(class="form-control" , placeholder ="Seu Usuario") }}
+                    {% if form.errors.username %}
+                  <div class="alert alert-danger" role="alert">
+                    Erro aqui no usuario
+                  </div>
+                    {% endif %}
                 </div>
-
-
-
-
 
                 <div class="form-group">
 
