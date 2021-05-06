@@ -1,4 +1,5 @@
 from app import db , manager
+from flask_login import LoginManager 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column,Integer,String,ForeignKey,DateTime,Time,Boolean
 
@@ -11,6 +12,25 @@ class User(db.Model):
     password = db.Column(String(20))
     name = db.Column(String(20))
     email =  db.Column(String(50), unique=True)
+
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+    
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+    
+    
+    
 
     def __init__(self, username, password,name, email):
         self.username = username
@@ -48,6 +68,9 @@ class Follow(db.Model):
 
     user = db.relationship('User', foreign_keys=user_id)
     follower  = db.relationship('User', foreign_keys=follower_id)
+
+
+    
 
 
 
