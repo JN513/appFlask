@@ -44,10 +44,11 @@ def mostra():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     form = LoginForm()
+
     if form.validate_on_submit():
-        u =  User.query.filter_by(username=form.username.data).first()
-        if u and user.password == form.password.data:
-            login_user(u)
+        user =  User.query.filter_by(username=form.username.data).first()
+        if user and user.password == form.password.data:
+            login_user(user)
             flash("Logged in.")
         else:
             flash("Invalid Login")    
